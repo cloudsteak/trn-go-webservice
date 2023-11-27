@@ -222,6 +222,72 @@ Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden f
 
 Eredményképpen Windows-on egy exe fájlt kapunk, amit futtathatunk a Go fejlesztői környezewten kívül is.
 
+
+## Új elem hozzáadása a meglévő képzési listához
+
+1. Adjunk hozzá egy új függvényt, ami új képzét ad hozzá a meglévőekhez (másoljuk ezt a `kepzesLista` függvény után)
+
+```go
+// kepzesUj segítségével egy új elemet adhatunk a képzési listánkhoz
+func kepzesUj(c *gin.Context) {
+	var ujKepzes kepzes
+
+	// ujKepzes
+	if err := c.BindJSON(&ujKepzes); err != nil {
+		// Hibakezelés
+		return
+	}
+
+	// Adjuk hozzá az új képzést a már meglévőekhez
+	kepzesek = append(kepzesek, ujKepzes)
+	c.IndentedJSON(http.StatusCreated, ujKepzes)
+}
+```
+
+2. Módosítsuk a `main` függvényt, hogy lekezelje az új függvényt. (Új sor: `router.POST("/kepzesek", kepzesUj)`)
+
+```go
+// Fő függvény - az alkalmazás belépési pontja.
+// Web alkalmazás definiálása, amely a /kepzesek ág meghívása esetén meghívja a képzések listázása függvényt
+func main() {
+	router := gin.Default()
+	// Képzések lekérdezése
+	router.GET("/kepzesek", kepzesLista)
+	// Új képzés
+	router.POST("/kepzesek", kepzesUj)
+	// Az alkalmatás elérhető a 8080-as porton
+	router.Run("localhost:8080")
+}
+```
+
+3. A megírt kódot az alábbi paranccsal tudjuk futtani a project fő mappájából: `go run .` vagy `go run main.go`
+4. Ha megjelenik a terminal-ban a `[GIN-debug] Listening and serving HTTP on localhost:8080` az alkalmazás készen áll a használatra
+5. Egy böngésző ablakban nyisd meg a http://localhost:8080/kepzesek
+
+Eredmény: ugyanaz lesz mint korábban, hiszen még nem adtunk hozzá új képzést
+
+6. Új képzés hozzáadásához nyissunk egy új terminál-t vagy parancssort (CMD)
+7. Illeszük bele az alábbi kódot:
+
+```bash
+curl http://localhost:8080/kepzesek \
+    --include \
+    --header "Content-Type: application/json" \
+    --request "POST" \
+    --data '{"id": 6, "kepzes": "Go programozási nyelv alapjai", "felho": "Azure, AWS, GCP", "szint": "alap", "tipus": "videó", "ora": 1.5}'
+```
+
+Eredmény:
+
+![Új képzés]()
+
+
+8. Most frissítsünk rá a böngészőnkben. a http://localhost:8080/kepzesek linkre
+
+Eredmény:
+
+![Új képzés megjelent]()
+
 ## Meglévő kód használata
 
 1. Terminalban belépek a projekt mappába

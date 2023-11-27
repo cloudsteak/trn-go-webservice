@@ -29,11 +29,29 @@ func kepzesLista(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, kepzesek)
 }
 
+// kepzesUj segítségével egy új elemet adhatunk a képzési listánkhoz
+func kepzesUj(c *gin.Context) {
+	var ujKepzes kepzes
+
+	// ujKepzes
+	if err := c.BindJSON(&ujKepzes); err != nil {
+		// Hibakezelés
+		return
+	}
+
+	// Adjuk hozzá az új képzést a már meglévőekhez
+	kepzesek = append(kepzesek, ujKepzes)
+	c.IndentedJSON(http.StatusCreated, ujKepzes)
+}
+
 // Fő függvény - az alkalmazás belépési pontja.
 // Web alkalmazás definiálása, amely a /kepzesek ág meghívása esetén meghívja a képzések listázása függvényt
 func main() {
 	router := gin.Default()
+	// Képzések lekérdezése
 	router.GET("/kepzesek", kepzesLista)
+	// Új képzés
+	router.POST("/kepzesek", kepzesUj)
 	// Az alkalmatás elérhető a 8080-as porton
 	router.Run("localhost:8080")
 }
