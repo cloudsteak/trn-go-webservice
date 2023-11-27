@@ -270,11 +270,7 @@ Eredmény: ugyanaz lesz mint korábban, hiszen még nem adtunk hozzá új képz�
 7. Illeszük bele az alábbi kódot:
 
 ```bash
-curl http://localhost:8080/kepzesek \
-    --include \
-    --header "Content-Type: application/json" \
-    --request "POST" \
-    --data '{"id": 6, "kepzes": "Go programozási nyelv alapjai", "felho": "Azure, AWS, GCP", "szint": "alap", "tipus": "videó", "ora": 1.5}'
+curl http://localhost:8080/kepzesek --include --header "Content-Type: application/json" --request "POST" --data '{"id": 6, "kepzes": "Go programozási nyelv alapjai", "felho": "Azure, AWS, GCP", "szint": "alap", "tipus": "videó", "ora": 1.5}'
 ```
 
 Eredmény:
