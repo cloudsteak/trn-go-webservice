@@ -1,7 +1,11 @@
 package main
 
 import (
+	"encoding/json"
+	"io"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,12 +20,26 @@ type kepzes struct {
 }
 
 // Képzések adatai egyben - Jelenleg helyben definiálva
-var kepzesek = []kepzes{
-	{ID: 1, Kepzes: "Cloud alapozó - AWS, Azure", Felho: "AWS, Azure", Szint: "alap", Tipus: "video", Ora: 3},
-	{ID: 2, Kepzes: "Cloud alapozó - Azure", Felho: "Azure", Szint: "alap", Tipus: "egy napos", Ora: 7},
-	{ID: 3, Kepzes: "Cloud alapozó - AWS", Felho: "AWS", Szint: "alap", Tipus: "egy napos", Ora: 7},
-	{ID: 4, Kepzes: "Haladó Cloud - Azure 7 hetes képzés", Felho: "Azure", Szint: "haladó", Tipus: "7 hetes", Ora: 10.5},
-	{ID: 5, Kepzes: "Azure haladó szinten", Felho: "Azure", Szint: "haladó", Tipus: "videó", Ora: 9},
+var kepzesek = []kepzes{}
+
+// Adatok olvasása fájlból
+func adatOlvasas(dataFajl string) {
+	// Adatfájl megnyitása
+	jsonFajl, err := os.Open(dataFajl)
+	// Hibakezelés, ha valamiért nem sikerül megnyitni a fájlt
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// Értékek kiolvasása byte tipusba
+	byteErtekek, _ := io.ReadAll(jsonFajl)
+
+	// Átalakítás JSON formátumra
+	json.Unmarshal(byteErtekek, &kepzesek)
+
+	log.Printf("%s sikeresen megnyitva\n", dataFajl)
+	// Fájl lezárása
+	defer jsonFajl.Close()
 }
 
 // Függvény, amely visszadja a képzések listáját az elérhető adathalmazból
@@ -47,11 +65,12 @@ func kepzesUj(c *gin.Context) {
 // Fő függvény - az alkalmazás belépési pontja.
 // Web alkalmazás definiálása, amely a /kepzesek ág meghívása esetén meghívja a képzések listázása függvényt
 func main() {
+	adatOlvasas("data.json")
 	router := gin.Default()
 	// Képzések lekérdezése
 	router.GET("/kepzesek", kepzesLista)
 	// Új képzés
-	router.POST("/kepzesek", kepzesUj)
+	//router.POST("/kepzesek", kepzesUj)
 	// Az alkalmatás elérhető a 8080-as porton
 	router.Run("localhost:8080")
 }
