@@ -269,20 +269,72 @@ Eredmény: ugyanaz lesz mint korábban, hiszen még nem adtunk hozzá új képz�
 6. Új képzés hozzáadásához nyissunk egy új terminál-t vagy parancssort (CMD)
 7. Illeszük bele az alábbi kódot:
 
+
 ```bash
-curl http://localhost:8080/kepzesek --include --header "Content-Type: application/json" --request "POST" --data '{"id": 6, "kepzes": "Go programozási nyelv alapjai", "felho": "Azure, AWS, GCP", "szint": "alap", "tipus": "videó", "ora": 1.5}'
+curl -i -H "Content-Type: application/json" -X POST -d "{\"id\": 6, \"kepzes\": \"Go programozási nyelv alapjai\", \"felho\": \"Azure, AWS, GCP\", \"szint\": \"alap\", \"tipus\": \"videó\", \"ora\": 1.5}" http://localhost:8080/kepzesek
 ```
 
 Eredmény:
 
-![Új képzés]()
+![Új képzés](ujkepzes.png)
 
 
-8. Most frissítsünk rá a böngészőnkben. a http://localhost:8080/kepzesek linkre
+8. Most frissítsünk rá a böngészőnkben. a http://localhost:8080/kepzesek linkre (megjelent az új képzés)
 
 Eredmény:
 
-![Új képzés megjelent]()
+```json
+[
+    {
+        "id": 1,
+        "kepzes": "Cloud alapozó - AWS, Azure",
+        "felho": "AWS, Azure",
+        "szint": "alap",
+        "tipus": "video",
+        "ora": 3
+    },
+    {
+        "id": 2,
+        "kepzes": "Cloud alapozó - Azure",
+        "felho": "Azure",
+        "szint": "alap",
+        "tipus": "egy napos",
+        "ora": 7
+    },
+    {
+        "id": 3,
+        "kepzes": "Cloud alapozó - AWS",
+        "felho": "AWS",
+        "szint": "alap",
+        "tipus": "egy napos",
+        "ora": 7
+    },
+    {
+        "id": 4,
+        "kepzes": "Haladó Cloud - Azure 7 hetes képzés",
+        "felho": "Azure",
+        "szint": "haladó",
+        "tipus": "7 hetes",
+        "ora": 10.5
+    },
+    {
+        "id": 5,
+        "kepzes": "Azure haladó szinten",
+        "felho": "Azure",
+        "szint": "haladó",
+        "tipus": "videó",
+        "ora": 9
+    },
+    {
+        "id": 6,
+        "kepzes": "Go programozási nyelv alapjai",
+        "felho": "Azure, AWS, GCP",
+        "szint": "alap",
+        "tipus": "videó",
+        "ora": 1.5
+    }
+]
+```
 
 ## Meglévő kód használata
 
