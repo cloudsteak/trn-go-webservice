@@ -100,7 +100,7 @@ import (
 
 9. Mentsd el a módosításokat
 
-10. A Go érzékeli, hogy van csomag függőség és pár másodperc múlva jelzi, hogy hiányozik a módosítja is a kódot ennek megfeleően.
+10. A Go érzékeli, hogy van csomag függőség és pár másodperc múlva jelzi, hogy hiányzik és módosítja a kódot ennek megfeleően. Vagy jelzi ha hiányzik egy csomag és azt telepíteni kell.
 
 11. Futtasd az alábbi parancsot, hogy letöltődjenek a megfelelő csomagok:
 
@@ -222,7 +222,6 @@ Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden f
 
 Eredményképpen Windows-on egy exe fájlt kapunk, amit futtathatunk a Go fejlesztői környezewten kívül is.
 
-
 ## Új elem hozzáadása a meglévő képzési listához
 
 1. Adjunk hozzá egy új függvényt, ami új képzét ad hozzá a meglévőekhez (másoljuk ezt a `kepzesLista` függvény után)
@@ -269,7 +268,6 @@ Eredmény: ugyanaz lesz mint korábban, hiszen még nem adtunk hozzá új képz�
 6. Új képzés hozzáadásához nyissunk egy új terminál-t vagy parancssort (CMD)
 7. Illeszük bele az alábbi kódot:
 
-
 ```bash
 curl -i -H "Content-Type: application/json" -X POST -d "{\"id\": 6, \"kepzes\": \"Go programozási nyelv alapjai\", \"felho\": \"Azure, AWS, GCP\", \"szint\": \"alap\", \"tipus\": \"videó\", \"ora\": 1.5}" http://localhost:8080/kepzesek
 ```
@@ -278,61 +276,60 @@ Eredmény:
 
 ![Új képzés](ujkepzes.png)
 
-
 8. Most frissítsünk rá a böngészőnkben. a http://localhost:8080/kepzesek linkre (megjelent az új képzés)
 
 Eredmény:
 
 ```json
 [
-    {
-        "id": 1,
-        "kepzes": "Cloud alapozó - AWS, Azure",
-        "felho": "AWS, Azure",
-        "szint": "alap",
-        "tipus": "video",
-        "ora": 3
-    },
-    {
-        "id": 2,
-        "kepzes": "Cloud alapozó - Azure",
-        "felho": "Azure",
-        "szint": "alap",
-        "tipus": "egy napos",
-        "ora": 7
-    },
-    {
-        "id": 3,
-        "kepzes": "Cloud alapozó - AWS",
-        "felho": "AWS",
-        "szint": "alap",
-        "tipus": "egy napos",
-        "ora": 7
-    },
-    {
-        "id": 4,
-        "kepzes": "Haladó Cloud - Azure 7 hetes képzés",
-        "felho": "Azure",
-        "szint": "haladó",
-        "tipus": "7 hetes",
-        "ora": 10.5
-    },
-    {
-        "id": 5,
-        "kepzes": "Azure haladó szinten",
-        "felho": "Azure",
-        "szint": "haladó",
-        "tipus": "videó",
-        "ora": 9
-    },
-    {
-        "id": 6,
-        "kepzes": "Go programozási nyelv alapjai",
-        "felho": "Azure, AWS, GCP",
-        "szint": "alap",
-        "tipus": "videó",
-        "ora": 1.5
-    }
+  {
+    "id": 1,
+    "kepzes": "Cloud alapozó - AWS, Azure",
+    "felho": "AWS, Azure",
+    "szint": "alap",
+    "tipus": "video",
+    "ora": 3
+  },
+  {
+    "id": 2,
+    "kepzes": "Cloud alapozó - Azure",
+    "felho": "Azure",
+    "szint": "alap",
+    "tipus": "egy napos",
+    "ora": 7
+  },
+  {
+    "id": 3,
+    "kepzes": "Cloud alapozó - AWS",
+    "felho": "AWS",
+    "szint": "alap",
+    "tipus": "egy napos",
+    "ora": 7
+  },
+  {
+    "id": 4,
+    "kepzes": "Haladó Cloud - Azure 7 hetes képzés",
+    "felho": "Azure",
+    "szint": "haladó",
+    "tipus": "7 hetes",
+    "ora": 10.5
+  },
+  {
+    "id": 5,
+    "kepzes": "Azure haladó szinten",
+    "felho": "Azure",
+    "szint": "haladó",
+    "tipus": "videó",
+    "ora": 9
+  },
+  {
+    "id": 6,
+    "kepzes": "Go programozási nyelv alapjai",
+    "felho": "Azure, AWS, GCP",
+    "szint": "alap",
+    "tipus": "videó",
+    "ora": 1.5
+  }
 ]
 ```
 
