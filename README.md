@@ -171,15 +171,49 @@ Eredmény:
 
 Eredmény:
 
-```html
-[ { "id": 1, "kepzes": "Cloud alapozó - AWS, Azure", "felho": "AWS, Azure",
-"szint": "alap", "tipus": "video", "ora": 3 }, { "id": 2, "kepzes": "Cloud
-alapozó - Azure", "felho": "Azure", "szint": "alap", "tipus": "egy napos",
-"ora": 7 }, { "id": 3, "kepzes": "Cloud alapozó - AWS", "felho": "AWS", "szint":
-"alap", "tipus": "egy napos", "ora": 7 }, { "id": 4, "kepzes": "Haladó Cloud -
-Azure 7 hetes képzés", "felho": "Azure", "szint": "haladó", "tipus": "7 hetes",
-"ora": 10.5 }, { "id": 5, "kepzes": "Azure haladó szinten", "felho": "Azure",
-"szint": "haladó", "tipus": "videó", "ora": 9 } ]
+```json
+[
+  {
+    "id": 1,
+    "kepzes": "Cloud alapozó - AWS, Azure",
+    "felho": "AWS, Azure",
+    "szint": "alap",
+    "tipus": "video",
+    "ora": 3
+  },
+  {
+    "id": 2,
+    "kepzes": "Cloud alapozó - Azure",
+    "felho": "Azure",
+    "szint": "alap",
+    "tipus": "egy napos",
+    "ora": 7
+  },
+  {
+    "id": 3,
+    "kepzes": "Cloud alapozó - AWS",
+    "felho": "AWS",
+    "szint": "alap",
+    "tipus": "egy napos",
+    "ora": 7
+  },
+  {
+    "id": 4,
+    "kepzes": "Haladó Cloud - Azure 7 hetes képzés",
+    "felho": "Azure",
+    "szint": "haladó",
+    "tipus": "7 hetes",
+    "ora": 10.5
+  },
+  {
+    "id": 5,
+    "kepzes": "Azure haladó szinten",
+    "felho": "Azure",
+    "szint": "haladó",
+    "tipus": "videó",
+    "ora": 9
+  }
+]
 ```
 
 ## Alkalmazás fordítása (build)
