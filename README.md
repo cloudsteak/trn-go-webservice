@@ -210,5 +210,5 @@ Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden f
 
 Eredményképpen Windows-on egy exe fájlt kapunk, amit futtathatunk a Go fejlesztői környezewten kívül is.
 
-![Hello Világ](webszolgaltatasexe.png)
+
 
