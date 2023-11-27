@@ -157,6 +157,7 @@ Eredmény:
 404 page not found
 ```
 4. Ez normális, hiszen a képzések listája az alábbi linken érhető el: http://localhost:8080/kepzesek
+
 Eredmény:
 ```html
 [
