@@ -65,12 +65,13 @@ func kepzesUj(c *gin.Context) {
 // Fő függvény - az alkalmazás belépési pontja.
 // Web alkalmazás definiálása, amely a /kepzesek ág meghívása esetén meghívja a képzések listázása függvényt
 func main() {
+	// Adatok beolvasása
 	adatOlvasas("data.json")
 	router := gin.Default()
 	// Képzések lekérdezése
 	router.GET("/kepzesek", kepzesLista)
 	// Új képzés
-	//router.POST("/kepzesek", kepzesUj)
+	router.POST("/kepzesek", kepzesUj)
 	// Az alkalmatás elérhető a 8080-as porton
 	router.Run("localhost:8080")
 }
