@@ -218,7 +218,7 @@ Eredmény:
 
 ## Alkalmazás fordítása (build)
 
-Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden fejlesztői eszközt és függőséget telepíyteni kellene, akkor azt egy csomagba le is tudjuk fordítani (buld). Ehhez az alábbi parancsot kell futtatni: `go build`
+Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden fejlesztői eszközt és függőséget telepíteni kellene, akkor azt egy csomagba le is tudjuk fordítani (build). Ehhez az alábbi parancsot kell futtatni: `go build`
 
 Eredményképpen Windows-on egy exe fájlt kapunk, amit futtathatunk a Go fejlesztői környezewten kívül is.
 
