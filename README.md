@@ -210,5 +210,12 @@ Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden f
 
 Eredményképpen Windows-on egy exe fájlt kapunk, amit futtathatunk a Go fejlesztői környezewten kívül is.
 
+## Meglévő kód használata
 
+1. Terminalban belépek a projekt mappába
+2. Terminal-ban lefuttatom az alábbi parancsot:
+
+```bash
+go get .
+```
 
