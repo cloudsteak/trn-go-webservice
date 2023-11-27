@@ -100,7 +100,7 @@ import (
 
 9. Mentsd el a módosításokat
 
-10. A Go érzékeli, hogy van csomag függőség és pár másodperc múlva jelzi, hogy hiányozik a módosítja is a kódot ennek megfeleően.
+10. A Go érzékeli, hogy van csomag függőség és pár másodperc múlva jelzi, hogy hiányzik és módosítja a kódot ennek megfeleően. Vagy jelzi ha hiányzik egy csomag és azt telepíteni kell.
 
 11. Futtasd az alábbi parancsot, hogy letöltődjenek a megfelelő csomagok:
 
@@ -218,7 +218,7 @@ Eredmény:
 
 ## Alkalmazás fordítása (build)
 
-Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden fejlesztői eszközt és függőséget telepíyteni kellene, akkor azt egy csomagba le is tudjuk fordítani (buld). Ehhez az alábbi parancsot kell futtatni: `go build`
+Ha szeretnénk az alkalmazásunkat máshol is futtatni, anélkül, hogy minden fejlesztői eszközt és függőséget telepíteni kellene, akkor azt egy csomagba le is tudjuk fordítani (build). Ehhez az alábbi parancsot kell futtatni: `go build`
 
 Eredményképpen Windows-on egy exe fájlt kapunk, amit futtathatunk a Go fejlesztői környezewten kívül is.
 
